@@ -5,14 +5,13 @@ import React from 'react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { differenceInHours, differenceInMinutes } from 'date-fns';
+import { SkeletonLoading } from './skeleton-loading'
 
 export function ClocksDoneList() {
   const { data: clocksDone, isLoading } = useClocksDone()
 
   if (isLoading) {
-    return Array.from({ length: 5 }).map((_, index) => (
-      <Skeleton key={index} className='w-full h-32' />
-    ))
+    return <SkeletonLoading />
   }
 
   return (

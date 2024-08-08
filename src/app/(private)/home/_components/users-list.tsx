@@ -3,14 +3,13 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useUsers } from '@/hooks'
 import { useSession } from 'next-auth/react'
 import React from 'react'
+import { SkeletonLoading } from './skeleton-loading'
 
 export function UsersList() {
   const { data } = useSession()
   const { data: users, isLoading } = useUsers(data)
 
-  if(isLoading) return Array.from({ length: 4 }).map((_, i) => (
-    <Skeleton key={i} className='h-20'/>
-  ))
+  if(isLoading) return <SkeletonLoading />
 
   return (
     <>
