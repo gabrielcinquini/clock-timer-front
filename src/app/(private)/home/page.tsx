@@ -24,13 +24,15 @@ export default function HomePage() {
       <TabsContent value="allClocks" className="grid gap-4 px-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <ClocksDoneList />
       </TabsContent>
-      <TabsContent value="members" className="grid gap-4 px-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        <UsersList />
-      </TabsContent>
       {currentSession?.user.isManager && (
-        <TabsContent value="signUp" className="flex items-center justify-center">
-          <SignUp/>
-        </TabsContent>
+        <>
+          <TabsContent value="members" className="grid gap-4 px-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <UsersList />
+          </TabsContent>
+          <TabsContent value="signUp" className="flex items-center justify-center">
+            <SignUp/>
+          </TabsContent>
+        </>
       )}
     </Tabs>
   )
