@@ -21,7 +21,7 @@ export default async function middleware(req: NextRequest) {
     'i',
   )
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
-  const isAuth = await getToken({ req })
+  const isAuth = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
 
   if (isPublicPage && isAuth) {
     return NextResponse.redirect(new URL(APP_ROUTES.private.home, req.url))
